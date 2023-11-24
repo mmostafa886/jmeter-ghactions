@@ -1,4 +1,7 @@
-on: [push]
+name: JMeter
+on: 
+  push:
+    branches: [ main ]
 jobs:
   jmeter_job:
     runs-on: ubuntu-latest
