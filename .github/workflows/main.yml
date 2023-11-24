@@ -23,7 +23,7 @@ jobs:
         # Where to store the results e.g., result.csv
         #results-file: # optional, default is result.jtl
         # Optional arguments. For more details https://jmeter.apache.org/usermanual/get-started.html#non_gui
-        args: "-e -o ./reports/html/"
+        args: "-e -o ./reports"
     - name: Upload Results
       uses: actions/upload-artifact@v3
       with:
@@ -34,4 +34,4 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: jmeter-reports
-        path: ./reports/
+        path: ./reports
