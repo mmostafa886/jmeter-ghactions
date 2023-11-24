@@ -1,0 +1,26 @@
+name: JMeter
+on: 
+  push:
+    branches: [ main ]
+jobs:
+  jmeter_job:
+    runs-on: ubuntu-latest
+    name: JMeter Test Execution
+    steps:      
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Create reports directory
+      run: mkdir reports
+
+    - name: PerfAction for JMeter
+  # You may pin to the exact commit or the version.
+  # uses: QAInsights/PerfAction@5a3c503bff845dd019d4b6e30d71f4585494a2ea
+      uses: QAInsights/PerfAction@v5.6.2
+      with:
+        # JMeter test plan to execute
+        test-plan-path: ./RecodingTestPlan.jmx
+        # Where to store the results e.g., result.csv
+        #results-file: # optional, default is result.jtl
+        # Optional arguments. For more details https://jmeter.apache.org/usermanual/get-started.html#non_gui
+        args: "-e -o ./reports/html/"
