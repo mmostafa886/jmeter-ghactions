@@ -28,10 +28,10 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: jmeter-results
-        path: ./result.jtl
+        path: ./
 
     - name: Upload HTML Reports
       uses: actions/upload-artifact@v3
       with:
         name: jmeter-reports
-        path: ./reports
+        path: ./reports/html
