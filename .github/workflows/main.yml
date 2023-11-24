@@ -19,7 +19,7 @@ jobs:
       uses: QAInsights/PerfAction@v5.6.2
       with:
         # JMeter test plan to execute
-        test-plan-path: ./RecodingTestPlan.jmx
+        test-plan-path: ./CSV_Dataset.jmx
         # Where to store the results e.g., result.csv
         #results-file: # optional, default is result.jtl
         # Optional arguments. For more details https://jmeter.apache.org/usermanual/get-started.html#non_gui
