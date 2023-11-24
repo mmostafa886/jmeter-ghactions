@@ -24,3 +24,14 @@ jobs:
         #results-file: # optional, default is result.jtl
         # Optional arguments. For more details https://jmeter.apache.org/usermanual/get-started.html#non_gui
         args: "-e -o ./reports/html/"
+    - name: Upload Results
+      uses: actions/upload-artifact@v3
+      with:
+        name: jmeter-results
+        path: result.jtl
+
+    - name: Upload HTML Reports
+      uses: actions/upload-artifact@v3
+      with:
+        name: jmeter-reports
+        path: reports
