@@ -4,24 +4,22 @@ on:
 jobs:
   jmeter_job:
     runs-on: ubuntu-latest
-    name: JMeter Test Execution    
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v3
-  
-      - name: Set up Java
-        uses: actions/setup-java@v2
-        with:
-          distribution: 'adopt'
-          java-version: '17'
-  
-      - name: Install JMeter
-        run: |
-          wget -q https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-5.4.1.tgz
-          tar -xf apache-jmeter-5.4.1.tgz
-          export PATH=$PATH:$(pwd)/apache-jmeter-5.4.1/bin
-  
-      - name: Run JMeter Performance Test
-        run: |
-          # Run your JMeter test
-          jmeter -n -t CSV_DataSet.jmx -l ./Results/ExecutoinResult.csv -e -o ./Results/Report/
+    name: JMeter Test Execution
+    steps:      
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Create reports directory
+      run: mkdir reports
+
+    - name: PerfAction for JMeter
+  # You may pin to the exact commit or the version.
+  # uses: QAInsights/PerfAction@5a3c503bff845dd019d4b6e30d71f4585494a2ea
+      uses: QAInsights/PerfAction@v5.6.2
+      with:
+        # JMeter test plan to execute
+        test-plan-path: ./RecodingTestPlan.jmx
+        # Where to store the results e.g., result.csv
+        #results-file: # optional, default is result.jtl
+        # Optional arguments. For more details https://jmeter.apache.org/usermanual/get-started.html#non_gui
+        args: "-e -o ./reports/html/"
