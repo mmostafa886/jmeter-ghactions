@@ -27,4 +27,4 @@ jobs:
           mkdir Results
           mkdir Results/Report
           # Run your JMeter test
-          $(pwd)/apache-jmeter-5.4.1/bin/jmeter -n -t CSV_DataSet.jmx -l Results/ExecutoinResult.csv -e -o Results/Report/
+          $(pwd)/apache-jmeter-5.4.1/bin/jmeter -n -t CSV_DataSet.jmx -l ./Results/ExecutoinResult.csv -e -o ./Results/Report/
