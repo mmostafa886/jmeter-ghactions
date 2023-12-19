@@ -24,4 +24,4 @@ jobs:
       - name: Run JMeter Performance Test
         run: |
           # Run your JMeter test
-          jmeter -n -t CSV_DataSet.jmx -l ./Results/ExecutoinResult.csv -e -o ./Results/Report/
+          $(pwd)/apache-jmeter-5.4.1/bin/jmeter -n -t CSV_DataSet.jmx -l ./Results/ExecutoinResult.csv -e -o ./Results/Report/
