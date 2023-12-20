@@ -28,3 +28,12 @@ jobs:
           mkdir Results/Report
           # Run your JMeter test
           $(pwd)/apache-jmeter-5.6.2/bin/jmeter -n -t CSV_DataSet.jmx -l Results/ExecutoinResult.csv -e -o Results/Report/
+
+      - name: Deploy report to Github Pages #Deploy the genarted html report to the 'Github_Pages' in order to be easily accessible
+        if: always() 
+        #This means regardless of the previous step output, this step will be executed
+        uses: peaceiris/actions-gh-pages@v2
+        env:
+          PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }} #The GitHub Actions generated token for the workflow to be able to deploy the output to the GitHubPages
+          PUBLISH_BRANCH: gh-pages #The branch at which the report will be published to (needs to be spearate branch)
+          PUBLISH_DIR: ./Results/Reports #This is the directory at which the html report was generated
