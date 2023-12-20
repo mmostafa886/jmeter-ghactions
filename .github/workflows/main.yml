@@ -1,5 +1,5 @@
 name: JMeter
-on: 
+on:
   workflow_dispatch:
 jobs:
   jmeter_job:
@@ -8,23 +8,27 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
-  
+
       - name: Set up Java
         uses: actions/setup-java@v3
         with:
           distribution: 'adopt'
           java-version: '17'
-  
+
       - name: Install JMeter
         run: |
           wget -q https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-5.4.1.tgz
           tar -xf apache-jmeter-5.4.1.tgz
           export PATH=$PATH:$(pwd)/apache-jmeter-5.4.1/bin
-  
+
       - name: Run JMeter Performance Test
         run: |
-          #Create the Results folder
+          # Create the Results folder
           mkdir Results
-          mkdir Results/Report
-          # Run your JMeter test
-          $(pwd)/apache-jmeter-5.4.1/bin/jmeter -n -t CSV_DataSet.jmx -l ./Results/ExecutoinResult.csv -e -o ./Results/Report/
+          # Run your JMeter test without generating the HTML report immediately
+          $(pwd)/apache-jmeter-5.4.1/bin/jmeter -n -t CSV_DataSet.jmx -l ./Results/ExecutoinResult.csv
+
+      - name: Generate HTML Report
+        run: |
+          # Generate HTML report from the CSV file
+          $(pwd)/apache-jmeter-5.4.1/bin/jmeter -g ./Results/ExecutoinResult.csv -o ./Results/Report/
