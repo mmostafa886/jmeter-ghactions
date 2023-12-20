@@ -36,4 +36,4 @@ jobs:
         env:
           PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }} #The GitHub Actions generated token for the workflow to be able to deploy the output to the GitHubPages
           PUBLISH_BRANCH: gh-pages #The branch at which the report will be published to (needs to be spearate branch)
-          PUBLISH_DIR: ./Results/Reports #This is the directory at which the html report was generated
+          PUBLISH_DIR: ./Results/Report #This is the directory at which the html report was generated
