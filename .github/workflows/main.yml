@@ -28,7 +28,7 @@ jobs:
           # Run your JMeter test without generating the HTML report immediately
           $(pwd)/apache-jmeter-5.4.1/bin/jmeter -n -t CSV_DataSet.jmx -l ./Results/ExecutoinResult.csv
 
-      - name: Generate HTML Report
+      - name: Display Results
         run: |
-          # Generate HTML report from the CSV file
-          $(pwd)/apache-jmeter-5.4.1/bin/jmeter -g ./Results/ExecutoinResult.csv -o ./Results/Report/
+          # Display the contents of the result file for debugging purposes
+          cat ./Results/ExecutoinResult.csv
